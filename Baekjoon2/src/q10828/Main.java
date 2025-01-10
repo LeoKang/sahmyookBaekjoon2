@@ -1,11 +1,13 @@
 package q10828;
 
 import java.util.Scanner;
+import java.util.Stack;
 
 public class Main {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		SJStack stk = new SJStack(10000);
+//		SJStack stk = new SJStack(10000);
+		Stack<Integer> stk = new Stack<Integer>();
 
 		int cmdNum = sc.nextInt();
 		for (int i = 0; i < cmdNum; i++) {
@@ -17,16 +19,25 @@ public class Main {
 				stk.push(num);
 				break;
 			case "top":
-				stk.top();
+//				stk.top();
+				System.out.println(stk.peek());
 				break;
 			case "size":
-				stk.size();
+				System.out.println(stk.size());
 				break;
 			case "empty":
-				stk.empty();
+				if (stk.isEmpty()) {
+					System.out.println(1);
+				} else {
+					System.out.println(0);
+				}
+
 				break;
 			case "pop":
-				stk.pop();
+				if (!stk.isEmpty())
+					System.out.println(stk.pop());
+				else
+					System.out.println(-1);
 				break;
 			}
 		}
@@ -48,10 +59,10 @@ class SJStack {
 	}
 
 	public void top() {
-		if(top == -1) {
+		if (top == -1) {
 			System.out.println(top);
-		}else {
-			System.out.println(n[top]);	
+		} else {
+			System.out.println(n[top]);
 		}
 	}
 
@@ -66,12 +77,12 @@ class SJStack {
 			System.out.println(0);
 		}
 	}
-	
+
 	public void pop() {
-		if(top != -1) {
-			System.out.println(n[top--]);	
-		}else {
+		if (top != -1) {
+			System.out.println(n[top--]);
+		} else {
 			System.out.println(top);
-		}	
+		}
 	}
 }
